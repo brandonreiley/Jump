@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public int currentScore;
-    public int scoreIncr;
+    public float currentScore;
+    public float scoreIncr;
     public Text scoreText;
 
     // Start is called before the first frame update
@@ -18,11 +18,8 @@ public class Score : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            currentScore += scoreIncr;
-            scoreText.text = currentScore + "";
-        }
+    { 
+            currentScore += scoreIncr * Time.deltaTime;
+            scoreText.text = (int)currentScore + "";
     }
 }
