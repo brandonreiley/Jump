@@ -21,6 +21,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.collider.tag == "FinalsTrophy")
         {
+            SoundManager.PlaySound("deathSound");
             movement.enabled = false;
             gameOverUI.SetActive(true);
             Time.timeScale = 0;

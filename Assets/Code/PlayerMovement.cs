@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float jumpPower = 25;
+    public float jumpPower = 30;
     private float moveInput;
     public Rigidbody2D rb;
     public bool playerOnGround;
@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && playerOnGround == true)
         {
+            SoundManager.PlaySound("jumpSound");
             rb.velocity = Vector2.up * jumpPower;
             playerOnGround = false;
         }
