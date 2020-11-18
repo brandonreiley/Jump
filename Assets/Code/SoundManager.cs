@@ -6,6 +6,11 @@ public class SoundManager : MonoBehaviour
 {
     public static AudioClip jumpSound, deathSound, gameSound;
     static AudioSource audioSrc;
+    public AudioSource levelMusic;
+    public AudioSource deathEffect;
+
+    public bool levelSong = true;
+    public bool deathSong = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,24 +27,33 @@ public class SoundManager : MonoBehaviour
         
     }
 
+    public void LevelMusic()
+    {
+        levelSong = true;
+        deathSong = false;
+        levelMusic.Play();
+    }
+
+    public void DeathSound()
+    {
+        if (levelMusic.isPlaying)
+            levelSong = false;
+
+        levelMusic.Stop();
+
+        if(!deathEffect.isPlaying && deathSong == false)
+        {
+            deathEffect.Play();
+            deathSong = true;
+        }
+    }
+
     public static void PlaySound (string clip)
     {
         switch (clip)
         {
             case "jumpSound":
                 audioSrc.PlayOneShot(jumpSound);
-                break;
-            case "deathSound":
-                audioSrc.PlayOneShot(deathSound);
-                break;
-            case "gameSound":
-                audioSrc.PlayOneShot(gameSound);
-                break;
-            case "gameOver":
-                audioSrc.Pause();
-                break;
-            case "newGame":
-                audioSrc.Play();
                 break;
         }
     }
