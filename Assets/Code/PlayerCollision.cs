@@ -13,8 +13,8 @@ public class PlayerCollision : MonoBehaviour
     public void NewGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1f;
         gameIsPaused = false;
+        Time.timeScale = 1f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -23,7 +23,7 @@ public class PlayerCollision : MonoBehaviour
         {
             movement.enabled = false;
             gameOverUI.SetActive(true);
-            Time.timeScale = 0f;
+            Time.timeScale = 0;
             gameIsPaused = true;
         }
     }

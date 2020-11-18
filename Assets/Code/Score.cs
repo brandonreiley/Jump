@@ -18,8 +18,12 @@ public class Score : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
-            currentScore += scoreIncr * Time.deltaTime;
+    {
+        if (PlayerCollision.gameIsPaused == false)
+        {
+            Time.timeScale += .001f;
+            currentScore += scoreIncr * Time.unscaledDeltaTime;
             scoreText.text = (int)currentScore + "";
+        }
     }
 }
