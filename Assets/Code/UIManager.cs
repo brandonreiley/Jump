@@ -9,4 +9,9 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
 }
